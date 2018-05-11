@@ -61,8 +61,8 @@ export default class WxJsCore {
             })
 
             wx.ready(function () {
-                this.isReady = true
-                console.log('可以了', new Date().getTime(), this.isReady)
+                _self.isReady = true
+                console.log('可以了', new Date().getTime(), _self.isReady)
                 resolve()
             })
             wx.error(function (err) {
@@ -72,43 +72,18 @@ export default class WxJsCore {
         return configPromise
     }
 
-    wxMehodsCall (methods, config = {
-        success: function () {
-            console.log('成功')
-        },
-        cancel: function () {
-            console.log(
-                '取消'
-            )
-        }
-    }) {
-        if (this.isReady) {
-            wx[methods](config)
-        } else {
-            console.log('-----------呜呜呜，还没授权-----------')
-        }
+    wxMehodsCall (methods, config) {
+        const methodCallPromise = new Promise(function (resolve, reject) {
+            wx[methods]({
+                config,
+                success: function (data) {
+                    resolve(data)
+                },
+                fail: function (err) {
+                    reject(err)
+                }
+            })
+        })
+        return methodCallPromise
     }
 }
-
-// const wxJsInit = (config) => {
-//     let wxJsCore = new WxJsCore(config)
-//     wxJsCore.jsSdkConfig()
-//     wxJsCore.wxMehodsCall('getLocation', {
-//         type: 'wgs84',
-//         success: function (data) {
-//             let latitude = data.latitude
-//             let longitude = data.longitude
-//             if (longitude != null && latitude != null) {
-//                 console.log(longitude + ':' + latitude)
-//                 callback && callback(longitude, latitude)
-//             } else {
-//                 alert('获取地理位置信息失败请重试')
-//             }
-//         },
-//         fail: function (data) {
-//             console.log('微信获取位置失败：' + JSON.stringify(data))
-//         }
-//     })
-//
-// }
-

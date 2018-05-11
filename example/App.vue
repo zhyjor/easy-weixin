@@ -20,9 +20,9 @@
 //            })
             wxJsInits({
                 appId: 'wx9e3db1dfe14a2868',
-                timestamp: '1525951578',
-                nonceStr: 'b1a76bb45d8441ba',
-                signature: 'e4c4a004f3039172e8b70f652b8ea824a7f3ec35',
+                timestamp: '1526001402',
+                nonceStr: 'd3adf293b49b4ff4',
+                signature: '520ce07f5fdc15e6e49ae6302a5eace49ad101d4',
             })
         }
     }
