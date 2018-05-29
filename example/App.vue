@@ -5,26 +5,35 @@
 </template>
 
 <script>
-    import {wxJsInit} from '../src/wxJsInit'
-    import wxJsInits from '../src/jsInit'
+    import wxJsInit from '../src/wxJsInit'
 
     export default {
         name: 'app',
-        mounted: function () {
-            let url = window.location.href.split('#')[0]
-//            wxJsInit({
+//        mounted: function () {
+//            let url = window.location.href.split('#')[0]
+//            let jsInit = new wxJsInit({
 //                appId: 'wx9e3db1dfe14a2868',
-//                timestamp: '1525951578',
-//                nonceStr: 'b1a76bb45d8441ba',
-//                signature: 'e4c4a004f3039172e8b70f652b8ea824a7f3ec35',
+//                timestamp: '1527558681',
+//                nonceStr: '788ff6bf75e0422e',
+//                signature: 'beaf3a7eb9aa37146261b0dc78230c8d21cc5690',
 //            })
-            wxJsInits({
-                appId: 'wx9e3db1dfe14a2868',
-                timestamp: '1526001402',
-                nonceStr: 'd3adf293b49b4ff4',
-                signature: '520ce07f5fdc15e6e49ae6302a5eace49ad101d4',
-            })
-        }
+//
+//            jsInit.callWxMethods('getLocation', {
+//                type: 'wgs84'
+//            }).then(function (data) {
+//                let latitude = data.latitude
+//                let longitude = data.longitude
+//                if (longitude != null && latitude != null) {
+//                    console.log('位置信息:', longitude + ':' + latitude)
+//                    // callback && callback(longitude, latitude)
+//                } else {
+//                    console.log('获取地理位置信息失败请重试')
+//                }
+//            }).catch((err) => {
+//                console.log(err)
+//            })
+//
+//        }
     }
 </script>
 

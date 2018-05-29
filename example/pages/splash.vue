@@ -7,22 +7,65 @@
             <p>
                 这个页面是已经经过授权的，因为获取的openId存储在sessionStroage
             </p>
+
+            <p>
+                经度{{longitude}}
+            </p>
         </div>
         <button class='login' v-on:click='goMain'>登录</button>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
+    import wxJsInit from '../../src/wxJsInit'
+
     export default {
         name: 'splash',
         data () {
-            return {}
+            let longitude = ''
+            let latitude = ''
+            return {
+                longitude: longitude,
+                latitude: latitude
+            }
+        },
+        mounted: function () {
+            let _self = this
+            let url = window.location.href.split('#')[0]
+//            wxJsInit({
+//                appId: 'wx9e3db1dfe14a2868',
+//                timestamp: '1525951578',
+//                nonceStr: 'b1a76bb45d8441ba',
+//                signature: 'e4c4a004f3039172e8b70f652b8ea824a7f3ec35',
+//            })
+            let jsInit = new wxJsInit({
+                appId: 'wx9e3db1dfe14a2868',
+                timestamp: '1527583682',
+                nonceStr: '99f2133be70943df',
+                signature: '1f98c063ddb1a6e98c0286f19383e912e68a06ba',
+            })
+
+            jsInit.callWxMethods('getLocation', {
+                type: 'wgs84'
+            }).then(function (data) {
+                let latitude = data.latitude
+                let longitude = data.longitude
+                if (longitude != null && latitude != null) {
+                    _self.longitude = longitude
+                    _self.latitude = latitude
+                    console.log('位置信息:', longitude + ':' + latitude)
+                    // callback && callback(longitude, latitude)
+                } else {
+                    console.log('获取地理位置信息失败请重试')
+                }
+            })
+
         },
         methods: {
             goMain () {
                 this.$router.replace({name: 'home'})
             },
-        }
+        },
     }
 
 </script>
