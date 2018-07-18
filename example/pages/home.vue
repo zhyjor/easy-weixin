@@ -29,9 +29,9 @@
 //            })
             let jsInit = new wxJsInit({
                 appId: 'wx9e3db1dfe14a2868',
-                timestamp: '1527558681',
-                nonceStr: '788ff6bf75e0422e',
-                signature: 'beaf3a7eb9aa37146261b0dc78230c8d21cc5690',
+                timestamp: '1531893075',
+                nonceStr: '51a518dc46d64414',
+                signature: 'e23dacd57462be096834cbda924fbfeb9b09277d',
             })
 
             jsInit.callWxMethods('getLocation', {
