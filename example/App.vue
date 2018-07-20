@@ -5,7 +5,7 @@
 </template>
 
 <script>
-    import wxJsInit from '../src/wxJsInit'
+    // import {wxJsInit} from '../src/wxJsInit'
 
     export default {
         name: 'app',

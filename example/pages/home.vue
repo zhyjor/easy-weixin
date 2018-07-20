@@ -13,7 +13,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import wxJsInit from '../../src/wxJsInit'
+    import {wxJsInit} from '../../index'
     export default {
         name: 'home',
         data () {

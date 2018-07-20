@@ -17,7 +17,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-    import wxJsInit from '../../src/wxJsInit'
+    // import wxJsInit from '../../src/wxJsInit'
 
     export default {
         name: 'splash',
