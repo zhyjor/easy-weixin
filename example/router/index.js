@@ -5,7 +5,7 @@ import Splash from '../pages/splash.vue'
 import Home from '../pages/home.vue'
 
 import store from '../store/'
-import {wxAuthInit} from '../../index'
+import { wxAuthInit } from '../../src/index'
 
 Vue.use(Router)
 

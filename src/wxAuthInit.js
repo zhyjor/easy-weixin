@@ -12,14 +12,14 @@ const wxAuthInit = (options) => {
   let weChatAuth = new WeChatAuth(options)
   let next = options.next
 
-  function urlCodeQueryFilter (code) {
+  function urlCodeQueryFilter(code) {
     if (code) {
       weChatAuth.setAuthCode(code)
       weChatAuth.removeUrlCodeQuery()
     }
   }
 
-  function checkRouterAuth (next) {
+  function checkRouterAuth(next) {
     let authCode = weChatAuth.getAuthCode()
     if (!authCode && !weChatAuth.getAccessToken()) {
       weChatAuth.openAuthPage(encodeURIComponent(window.location.href))
@@ -31,7 +31,7 @@ const wxAuthInit = (options) => {
     return true
   }
 
-  function beforeEach (next) {
+  function beforeEach(next) {
     let query = querystring.parse(url.parse(window.location.href).query)
     let code = query.code
     urlCodeQueryFilter(code)
