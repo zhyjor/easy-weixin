@@ -27,12 +27,15 @@ export default {
     getLocation() {
       wxJsInit({
         appId: 'wx9e3db1dfe14a2868',
-        timestamp: '1533892504',
-        nonceStr: '4d2be6bbf0b34cdd',
-        signature: 'e5bd15bfd38216402ae0bfdbe8246729a8db95c6',
-      }).then(wxJsMethodCall('getLocation', {
-        type: 'wgs84'
-      }).then(function(data) {
+        timestamp: '1533950225',
+        nonceStr: '104239041ba34ab2',
+        signature: '656f4118411b8728ad3ad1bef3e286d26a5e198d',
+      }).then((res) => {
+          return wxJsMethodCall('getLocation', {
+            type: 'wgs84'
+          })
+        }
+      ).then(function(data) {
         console.log(data)
         let latitude = data.latitude
         let longitude = data.longitude
@@ -42,7 +45,7 @@ export default {
         } else {
           console.log('获取地理位置信息失败请重试')
         }
-      })).catch(e => {
+      }).catch(e => {
         console.log(e)
       })
     },
