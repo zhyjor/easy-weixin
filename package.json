@@ -1,6 +1,6 @@
 {
   "name": "easy-weixin",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "a lib for weixin web auth and js-sdk",
   "main": "dist/index.js",
   "files": [
