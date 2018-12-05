@@ -27,9 +27,9 @@ export default {
     getLocation() {
       wxJsInit({
         appId: 'wx9e3db1dfe14a2868',
-        timestamp: '1533950225',
-        nonceStr: '104239041ba34ab2',
-        signature: '656f4118411b8728ad3ad1bef3e286d26a5e198d',
+        timestamp: '1543998081',
+        nonceStr: 'c3a1045e980d4b7d',
+        signature: '31cee611cf73f3da7ff38d2e3fd2ffb2548cf56e',
       }).then((res) => {
           return wxJsMethodCall('getLocation', {
             type: 'wgs84'

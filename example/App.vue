@@ -1,14 +1,41 @@
 <template>
-    <div id="app">
-        <router-view/>
-    </div>
+  <div id="app">
+    <router-view/>
+  </div>
 </template>
 
 <script>
-    // import {wxJsInit} from '../src/wxJsInit'
+// import {wxJsInit} from '../src/wxJsInit'
 
-    export default {
-        name: 'app',
+export default {
+  name: 'app',
+  mounted() {
+    (function() {
+      if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+        handleFontSize()
+      } else {
+        if (document.addEventListener) {
+          document.addEventListener("WeixinJSBridgeReady", handleFontSize, false)
+        } else if (document.attachEvent) {
+          document.attachEvent("WeixinJSBridgeReady", handleFontSize)
+          document.attachEvent("onWeixinJSBridgeReady", handleFontSize)
+        }
+      }
+
+      function handleFontSize() {
+        // 设置网页字体为默认大小
+        WeixinJSBridge.invoke('setFontSizeCallback', {
+          'fontSize': 0
+        })
+        // 重写设置网页字体大小的事件
+        WeixinJSBridge.on('menu:setfont', function() {
+          WeixinJSBridge.invoke('setFontSizeCallback', {
+            'fontSize': 0
+          })
+        })
+      }
+    })()
+  }
 //        mounted: function () {
 //            let url = window.location.href.split('#')[0]
 //            let jsInit = new wxJsInit({
@@ -34,18 +61,18 @@
 //            })
 //
 //        }
-    }
+}
 </script>
 
 <style>
-    #app {
-        font-family: 'arial', Helvetica, Arial, sans-serif;
-        font-size: 14px;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-        background-color: #f3f5f7;
-        height: 100%;
-    }
+  #app {
+    font-family: 'arial', Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    background-color: #f3f5f7;
+    height: 100%;
+  }
 </style>
